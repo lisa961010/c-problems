@@ -67,7 +67,7 @@ struct TreeLinkNode {
 };
 
 
-/*
+
 
 TreeLinkNode* GetNext(TreeLinkNode* pNode)
 {
@@ -115,7 +115,7 @@ TreeLinkNode* GetNext(TreeLinkNode* pNode)
         }
     }
 }
-*/
+
 
 
 
@@ -124,7 +124,7 @@ TreeLinkNode* GetNext(TreeLinkNode* pNode)
 int main() {
     //std::cout << "Hello, World!" << std::endl;
 
-    cout<< "er"<< endl;
+    cout<< "test"<< endl;
 
     return 0;
 }
