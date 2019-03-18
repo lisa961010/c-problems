@@ -122,7 +122,7 @@ TreeLinkNode* GetNext(TreeLinkNode* pNode)
 
 
 int main() {
-    //std::cout << "Hello, World!" << std::endl;
+    std::cout << "Hello, World!" << std::endl;
 
     cout<< "test"<< endl;
 
