@@ -67,8 +67,6 @@ struct TreeLinkNode {
 };
 
 
-
-
 TreeLinkNode* GetNext(TreeLinkNode* pNode)
 {
     if (pNode == NULL)
@@ -115,7 +113,6 @@ TreeLinkNode* GetNext(TreeLinkNode* pNode)
         }
     }
 }
-
 int main() {
     std::cout << "Hello, World!" << std::endl;
 
