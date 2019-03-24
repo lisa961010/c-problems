@@ -650,7 +650,6 @@ int GetUglyNumber_Solution(int index) {
 
 
 
-
 int main() {
     std::cout << "Hello, World!" << std::endl;
 
