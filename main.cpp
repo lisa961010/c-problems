@@ -3,6 +3,7 @@
 #include <string>
 #include <stack>
 #include <queue>
+#include <algorithm>
 
 using namespace std;
 
@@ -527,6 +528,14 @@ int NumberOf1Between1AndN_Solution(int n)
 
 */
 
+/*
+
+static bool cmp(int x, int y) {
+    string a = to_string(x) + to_string(y);
+    string b = to_string(y) + to_string(x);
+    return a < b;
+}
+
 
 string PrintMinNumber(vector<int> numbers) {
 //    输入一个正整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。
@@ -548,24 +557,92 @@ string PrintMinNumber(vector<int> numbers) {
         }
     }
 
-    for (int i = 0; i < n; ++i) {
-        for (int j = i + 1; j < n; ++j) {
-            string a = to_string(i) + to_string(j);
-            string b = to_string(j) + to_string(i);
-            if (a > b)
-            {
-
-            }
+    sort(numbers.begin(),numbers.end(),cmp);
 
 
-        }
+    for (int j = 0; j < n; ++j) {
+        res = res + to_string(numbers[j]);
     }
-
 
     return res;
 }
 
+*/
 
+
+static bool cmp(int x, int y)
+{
+    return x < y;
+}
+
+
+int GetUglyNumber_Solution(int index) {
+//    把只包含质因子2、3和5的数称作丑数（Ugly Number）。
+//    例如6、8都是丑数，但14不是，因为它包含质因子7。
+//    习惯上我们把1当做是第一个丑数。求按从小到大的顺序的第N个丑数。
+
+    int res;
+
+    if (index < 1)
+    {
+        return NULL;
+    }
+
+    vector<int> tmp(index);
+    int a = 0;
+    int b = 0;
+    int c = 0;
+    tmp[0] = 1;
+
+    for (int i = 1; i < index; ++i)
+    {
+        tmp[i] = min(2*tmp[a],min(3*tmp[b],5*tmp[c]));
+        if (tmp[i] == 2*tmp[a])
+        {
+            a++;
+        }
+        if (tmp[i] == 3*tmp[b])
+        {
+            b++;
+        }
+        if (tmp[i] == 5*tmp[c])
+        {
+            c++;
+        }
+    }
+
+
+
+
+    /*
+     * vector<int> tmp;
+
+    for (int i = 0; i < index; ++i)
+    {
+        for (int j = 0; j < (index-i); --j) {
+
+            for (int k = 0; k < (index-i-j); ++k) {
+                int a = 2^(i) * 3^(j) * 5^(k);
+                sort(tmp.begin(), tmp.end(), cmp);
+                if (tmp.size() <= index)
+                {
+                    tmp.push_back(a);
+                }
+                else{
+                    if (tmp[index-1] > a)
+                    {
+                        tmp[index-1] = a;
+                    }
+                }
+            }
+        }
+    }
+    sort(tmp.begin(), tmp.end(), cmp);*/
+
+
+    res = tmp[index-1];
+    return res;
+}
 
 
 
