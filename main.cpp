@@ -694,6 +694,7 @@ int minNumberInRotateArray(vector<int> rotateArray) {
 
 
 
+/*
 
 int MoreThanHalfNum_Solution(vector<int> numbers) {
 //    数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。
@@ -732,6 +733,36 @@ int MoreThanHalfNum_Solution(vector<int> numbers) {
 
     return 0;
 }
+
+*/
+
+
+
+
+
+vector<int> GetLeastNumbers_Solution(vector<int> input, int k) {
+//    输入n个整数，找出其中最小的K个数。
+//    例如输入4,5,1,6,2,7,3,8这8个数字，则最小的4个数字是1,2,3,4,。
+
+    vector<int> res;
+
+    int n = input.size();
+    if (n == 0 || k > n)
+    {
+        return res;
+    }
+
+    sort(input.begin(),input.end());
+
+
+    for (int i = 0; i < k; ++i) {
+        res.push_back(input[i]);
+    }
+
+    return res;
+
+}
+
 
 
 
