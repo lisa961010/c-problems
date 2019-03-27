@@ -570,10 +570,16 @@ string PrintMinNumber(vector<int> numbers) {
 */
 
 
-static bool cmp(int x, int y)
-{
-    return x < y;
-}
+
+
+
+
+/*
+
+//static bool cmp(int x, int y)
+//{
+//    return x < y;
+//}
 
 
 int GetUglyNumber_Solution(int index) {
@@ -611,38 +617,43 @@ int GetUglyNumber_Solution(int index) {
         }
     }
 
-
-
-
-    /*
-     * vector<int> tmp;
-
-    for (int i = 0; i < index; ++i)
-    {
-        for (int j = 0; j < (index-i); --j) {
-
-            for (int k = 0; k < (index-i-j); ++k) {
-                int a = 2^(i) * 3^(j) * 5^(k);
-                sort(tmp.begin(), tmp.end(), cmp);
-                if (tmp.size() <= index)
-                {
-                    tmp.push_back(a);
-                }
-                else{
-                    if (tmp[index-1] > a)
-                    {
-                        tmp[index-1] = a;
-                    }
-                }
-            }
-        }
-    }
-    sort(tmp.begin(), tmp.end(), cmp);*/
-
-
     res = tmp[index-1];
     return res;
 }
+
+*/
+
+
+
+int FirstNotRepeatingChar(string str) {
+
+//    在一个字符串(0<=字符串长度<=10000，全部由字母组成)中找到第一个只出现一次的字符,
+//    返回它的位置, 如果没有则返回 -1 (需要区分大小写)
+
+    int res = -1;
+    if (str.size() < 0 || str.size() > 10000)
+    {
+        return -1;
+    }
+
+    vector<int> tmp(256);
+
+    int n = str.size();
+    for (int i = 0; i < n; ++i) {
+        tmp[str[i]]++;
+    }
+
+    for (int j = 0; j < n; ++j) {
+        if (tmp[str[j]] == 1)
+        {
+            return j;
+        }
+    }
+
+    return -1;
+}
+
+
 
 
 
