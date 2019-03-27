@@ -658,6 +658,9 @@ int FirstNotRepeatingChar(string str) {
 */
 
 
+
+/*
+
 int minNumberInRotateArray(vector<int> rotateArray) {
 //    把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。
 //    输入一个非减排序的数组的一个旋转，输出旋转数组的最小元素。
@@ -687,9 +690,48 @@ int minNumberInRotateArray(vector<int> rotateArray) {
     return rotateArray[0];
 }
 
+*/
 
 
 
+
+int MoreThanHalfNum_Solution(vector<int> numbers) {
+//    数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。
+//    例如输入一个长度为9的数组{1,2,3,2,2,2,5,4,2}。
+//    由于数字2在数组中出现了5次，超过数组长度的一半，因此输出2。如果不存在则输出0。
+
+    int n = numbers.size();
+    int cmp = n/2;
+    int tmp = 1;
+    if (n == 0)
+    {
+        return 0;
+    }
+
+    if (n == 1)
+    {
+        return numbers[0];
+    }
+
+    sort(numbers.begin(),numbers.end());
+
+    for (int i = 1; i < n; ++i) {
+        if (numbers[i] == numbers[i-1])
+        {
+            tmp++;
+            if (tmp > cmp)
+            {
+                return numbers[i];
+            }
+        }
+        else
+        {
+            tmp = 1;
+        }
+    }
+
+    return 0;
+}
 
 
 
