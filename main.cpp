@@ -651,6 +651,7 @@ int FirstNotRepeatingChar(string str) {
     }
 
     return -1;
+
 }
 
 
