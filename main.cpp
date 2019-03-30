@@ -837,6 +837,8 @@ ListNode* FindFirstCommonNode( ListNode* pHead1, ListNode* pHead2) {
 */
 
 
+
+/*
 bool IsContinuous( vector<int> numbers ) {
 
 //    LL今天心情特别好,因为他去买了一副扑克牌,发现里面居然有2个大王,2个小王(一副牌原本是54张^_^)
@@ -882,6 +884,79 @@ bool IsContinuous( vector<int> numbers ) {
 
     return false;
 }
+*/
+
+
+
+int LastRemaining_Solution(int n, int m)
+{
+//    每年六一儿童节,牛客都会准备一些小礼物去看望孤儿院的小朋友,今年亦是如此。
+//    HF作为牛客的资深元老,自然也准备了一些小游戏。其中,有个游戏是这样的:
+//    首先,让小朋友们围成一个大圈。然后,他随机指定一个数m,让编号为0的小朋友开始报数。
+//    每次喊到m-1的那个小朋友要出列唱首歌,然后可以在礼品箱中任意的挑选礼物,并且不再回到圈中,
+//    从他的下一个小朋友开始,继续0...m-1报数....这样下去....
+//    直到剩下最后一个小朋友,可以不用表演,并且拿到牛客名贵的“名侦探柯南”典藏版(名额有限哦!!^_^)。
+//    请你试着想下,哪个小朋友会得到这份礼品呢？(注：小朋友的编号是从0到n-1)
+
+    vector<int> tmp(n);
+    vector<int> u(n);
+    int p = 0;
+
+    if (n <= 0 || m <= 0)
+    {
+        return -1;
+    }
+
+    for (int j = 0; j < n-1; ++j) {
+        for (int k = 0; k < m; ++k) {
+            while (tmp[p] != 0)
+            {
+                if (p == n-1)
+                {
+                    p = 0;
+                }
+                else
+                {
+                    p++;
+                }
+            }
+            if (p == n-1)
+            {
+                p = 0;
+            }
+            else
+            {
+                p++;
+            }
+        }
+        if (p == 0)
+        {
+            p = n-1;
+        }
+        else
+        {
+            p--;
+        }
+        tmp[p] = 1;
+        if (p == n-1)
+        {
+            p = 0;
+        }
+        else
+        {
+            p++;
+        }
+    }
+
+    for (int i = 0; i < n; ++i) {
+        if (tmp[i] == 0)
+        {
+            return i;
+        }
+    }
+
+    return -1;
+}
 
 
 
@@ -907,8 +982,9 @@ int main() {
     }*/
 
 
-    cout << IsContinuous({1,3,0,0,5});
+//    cout << IsContinuous({1,3,0,0,5});
 
+    cout << LastRemaining_Solution(5,3);
 
 
     return 0;
