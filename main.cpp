@@ -9,7 +9,6 @@
 
 using namespace std;
 
-/*
 struct TreeNode {
 	int val;
 	struct TreeNode *left;
@@ -18,7 +17,6 @@ struct TreeNode {
 			val(x), left(NULL), right(NULL) {
 	}
 };
-*/
 
 
 
@@ -161,6 +159,7 @@ bool isSymmetrical(TreeNode* pRoot)
 */
 
 
+/*
 struct TreeNode {
     int val;
     struct TreeNode *left;
@@ -169,6 +168,7 @@ struct TreeNode {
             val(x), left(NULL), right(NULL) {
     }
 };
+*/
 
 
 /*
@@ -800,6 +800,9 @@ int InversePairs(vector<int> data) {
 
 
 
+
+/*
+
 ListNode* FindFirstCommonNode( ListNode* pHead1, ListNode* pHead2) {
 //    输入两个链表，找出它们的第一个公共结点。
 
@@ -831,8 +834,54 @@ ListNode* FindFirstCommonNode( ListNode* pHead1, ListNode* pHead2) {
     return NULL;
 }
 
+*/
 
 
+bool IsContinuous( vector<int> numbers ) {
+
+//    LL今天心情特别好,因为他去买了一副扑克牌,发现里面居然有2个大王,2个小王(一副牌原本是54张^_^)
+//    他随机从中抽出了5张牌,想测测自己的手气,看看能不能抽到顺子,如果抽到的话,他决定去买体育彩票,嘿嘿！！
+//    “红心A,黑桃3,小王,大王,方片5”,“Oh My God!”不是顺子.....
+//    LL不高兴了,他想了想,决定大\小 王可以看成任何数字,并且A看作1,J为11,Q为12,K为13。
+//    上面的5张牌就可以变成“1,2,3,4,5”(大小王分别看作2和4),“So Lucky!”。LL决定去买体育彩票啦。
+//    现在,要求你使用这幅牌模拟上面的过程,然后告诉我们LL的运气如何，
+//    如果牌能组成顺子就输出true，否则就输出false。为了方便起见,你可以认为大小王是0。
+
+    int n = numbers.size();
+    int tmp = 0;
+    int count = 0;
+    int i = 4;
+
+    if (n != 5)
+    {
+        return false;
+    }
+
+    sort(numbers.begin(), numbers.end());
+
+    while (numbers[tmp] == 0)
+    {
+        tmp++;
+    }
+
+    while (i != tmp)
+    {
+        if (numbers[i] == numbers[i-1])
+        {
+            return false;
+        }
+
+        count = count + (numbers[i] - numbers[i-1] - 1);
+        i--;
+    }
+
+    if (tmp >= count)
+    {
+        return true;
+    }
+
+    return false;
+}
 
 
 
@@ -848,14 +897,17 @@ int main() {
 //    cout<< NumberOf1Between1AndN_Solution(13) << endl;
 
 
-    vector<int> data{1,2,3,4,5,6,7,0};
+    /*vector<int> data{1,2,3,4,5,6,7,0};
     cout<<InversePairs(data) <<endl;
 
     vector<int> output = sort1(data);
 
     for (int i = 0; i < output.size(); ++i) {
         cout << output[i] << "  ";
-    }
+    }*/
+
+
+    cout << IsContinuous({1,3,0,0,5});
 
 
 
