@@ -5,6 +5,8 @@
 #include <queue>
 #include <algorithm>
 
+#include "sort.h"
+
 using namespace std;
 
 /*
@@ -16,7 +18,7 @@ struct TreeNode {
 			val(x), left(NULL), right(NULL) {
 	}
 };
-
+*/
 
 
 
@@ -28,7 +30,7 @@ struct ListNode {
         }
 };
 
-
+/*
 int jumpFloorII(int n) {
     int result = 1;
     if(n == 1){
@@ -740,7 +742,7 @@ int MoreThanHalfNum_Solution(vector<int> numbers) {
 
 
 
-vector<int> GetLeastNumbers_Solution(vector<int> input, int k) {
+/*vector<int> GetLeastNumbers_Solution(vector<int> input, int k) {
 //    输入n个整数，找出其中最小的K个数。
 //    例如输入4,5,1,6,2,7,3,8这8个数字，则最小的4个数字是1,2,3,4,。
 
@@ -761,6 +763,72 @@ vector<int> GetLeastNumbers_Solution(vector<int> input, int k) {
 
     return res;
 
+}*/
+
+
+
+
+int InversePairs(vector<int> data) {
+//    在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。
+//    输入一个数组,求出这个数组中的逆序对的总数P。并将P对1000000007取模的结果输出。 即输出P%1000000007
+
+//    题目保证输入的数组中没有的相同的数字,数据范围：
+//    对于%50的数据,size<=10^4; 对于%75的数据,size<=10^5; 对于%100的数据,size<=2*10^5
+
+
+    int n = data.size();
+    if (n == 0)
+    {
+        return 0;
+    }
+
+    int res = 0;
+
+    for (int j = 0; j < n-1; ++j) {
+        for (int k = j; k < n; ++k) {
+            if (data[j] > data[k])
+            {
+                res++;
+            }
+        }
+    }
+
+    res = res%1000000007;
+
+    return res;
+}
+
+
+
+ListNode* FindFirstCommonNode( ListNode* pHead1, ListNode* pHead2) {
+//    输入两个链表，找出它们的第一个公共结点。
+
+    ListNode* res;
+
+    if (pHead1 == NULL || pHead2 == NULL)
+    {
+        return NULL;
+    }
+
+    ListNode* s1 = pHead1;
+    ListNode* s2 = pHead2;
+
+
+    while (pHead1 != NULL)
+    {
+        while (pHead2 != NULL)
+        {
+            if (pHead1 != pHead2)
+            {
+                pHead2 = pHead2->next;
+            }else{
+                return pHead1;
+            }
+        }
+        pHead2 = s2;
+        pHead1 = pHead1->next;
+    }
+    return NULL;
 }
 
 
@@ -778,6 +846,16 @@ int main() {
 
     cout<< "test"<< endl;
 //    cout<< NumberOf1Between1AndN_Solution(13) << endl;
+
+
+    vector<int> data{1,2,3,4,5,6,7,0};
+    cout<<InversePairs(data) <<endl;
+
+    vector<int> output = sort1(data);
+
+    for (int i = 0; i < output.size(); ++i) {
+        cout << output[i] << "  ";
+    }
 
 
 
