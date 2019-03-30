@@ -4,6 +4,7 @@
 #include <stack>
 #include <queue>
 #include <algorithm>
+#include <math.h>
 
 #include "sort.h"
 
@@ -887,6 +888,7 @@ bool IsContinuous( vector<int> numbers ) {
 */
 
 
+/*
 
 int LastRemaining_Solution(int n, int m)
 {
@@ -958,6 +960,18 @@ int LastRemaining_Solution(int n, int m)
     return -1;
 }
 
+*/
+
+
+
+
+int Sum_Solution(int n) {
+//    求1+2+3+...+n，要求不能使用乘除法、for、while、if、else、switch、case等关键字及条件判断语句（A?B:C）。
+
+    int res = 0;
+    n && (res = Sum_Solution(n-1) + n);
+    return res;
+}
 
 
 
@@ -984,8 +998,9 @@ int main() {
 
 //    cout << IsContinuous({1,3,0,0,5});
 
-    cout << LastRemaining_Solution(5,3);
+//    cout << LastRemaining_Solution(5,3);
 
+    cout << Sum_Solution(4);
 
     return 0;
 }
