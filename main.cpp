@@ -965,6 +965,7 @@ int LastRemaining_Solution(int n, int m)
 
 
 
+/*
 int Sum_Solution(int n) {
 //    求1+2+3+...+n，要求不能使用乘除法、for、while、if、else、switch、case等关键字及条件判断语句（A?B:C）。
 
@@ -972,6 +973,24 @@ int Sum_Solution(int n) {
     n && (res = Sum_Solution(n-1) + n);
     return res;
 }
+*/
+
+
+
+int Add(int num1, int num2)
+{
+//    写一个函数，求两个整数之和，要求在函数体内不得使用+、-、*、/四则运算符号。
+
+    while (num2 != 0)
+    {
+        int tmp = num1^num2;
+        num2 = (num1&num2)<<1;
+        num1 = tmp;
+    }
+
+    return num1;
+}
+
 
 
 
@@ -1000,7 +1019,10 @@ int main() {
 
 //    cout << LastRemaining_Solution(5,3);
 
-    cout << Sum_Solution(4);
+//    cout << Sum_Solution(4);
+
+
+
 
     return 0;
 }
